@@ -32,7 +32,7 @@ class LicenceController extends AbstractController
 
     public function createLicence()
     {
-        if (isset($_SESSION['user']) && $_SESSION['user']['idRole'] == 2) {
+        if (isset($_SESSION['user']) && $_SESSION['user']['idRole']) {
 
             if (isset($_POST['title'])) {
                 $this->check('title', $_POST['title']);
@@ -56,7 +56,7 @@ class LicenceController extends AbstractController
                 }
             }
 
-            require_once(__DIR__ . '/../Views/licence/createLicence.view.php');
+            require_once(__DIR__ . '/../Views/Licence/createLicence.php');
         } else {
             $this->redirectToRoute('/');
         }
@@ -171,7 +171,7 @@ class LicenceController extends AbstractController
 
             if (isset($_POST['client'])) {
                 $idClient = htmlspecialchars($_POST['client']);
-                $status = htmlspecialchars($_POST['avalability']);
+                $availability = htmlspecialchars($_POST['avalability']);
 
                 $this->checkFormat('client', $idClient);
                 $this->checkFormat('availability', $availability);
