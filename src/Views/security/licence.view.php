@@ -9,9 +9,7 @@ require_once(__DIR__ . '/partials/head.php');
                     if (isset($_SESSION['user'])) {
                         if ($_SESSION['user']['idRole'] == 2) {
                     ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="15551">Ajouter une licence</a>
-                            </li>
+                        
                         <?php
                         }
                         ?>

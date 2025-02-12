@@ -27,10 +27,10 @@
                 <ul class="navbar-nav">
                     <?php
                     if (isset($_SESSION['user'])) {
-                        if ($_SESSION['user']['idRole'] == 2) {
+                        if ($_SESSION['user']['idRole'] == 1 || $_SESSION['user']['idRole'] == 2) {
                     ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="15551">Ajouter une licence</a>
+                                <a class="nav-link" href="/src/Views/Licence/addLicence.view.php">Ajouter une licence</a>
                             </li>
                         <?php
                         }
