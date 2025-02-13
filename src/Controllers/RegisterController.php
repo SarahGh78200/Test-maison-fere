@@ -52,7 +52,6 @@ class RegisterController extends AbstractController
             }
         }
 
-        // Passer les erreurs à la vue
         $errors = $this->errors;
         require_once(__DIR__ . "/../Views/security/register.view.php");
     }

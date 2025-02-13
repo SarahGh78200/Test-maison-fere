@@ -21,7 +21,7 @@ class LoginController extends AbstractController
                 $user = User::findByEmail($email);
 
                 if ($user) {
-                    if (password_verify($password, $user->getPassword())) {
+                    if  (password_verify($password, $user->getPassword())) {
                         $_SESSION['user'] = [
                             'id' => $user->getId(),
                             'surname' => $user->getSurname(),
