@@ -23,7 +23,7 @@ require_once(__DIR__ . '/../partials/head.php');
     </div>
 
     <div class="buttonMyLicence">
-      <a href="/licenceUser"> Mes Licence</a>
+      <a href="/licenceUser"> Mes Licences</a>
     </div>
 
 
