@@ -9,7 +9,7 @@ abstract class AbstractController
     public function redirectToRoute($route)
     {
         http_response_code(303);
-        header("Location: {$route} ");
+        header("Location: {$route}");
         exit;
     }
 
@@ -22,6 +22,12 @@ abstract class AbstractController
         return false;
     }
 
+    protected function render(string $view, array $data = [])
+    {
+        extract($data); // Permet d'utiliser directement les clés du tableau comme variables
+        require_once __DIR__ . "/../Views/$view.php"; // Charge la vue demandée
+    }
+
     public function checkFormat($nameInput, $value)
     {
         $regexName = '/^[a-zA-Zà-üÀ-Ü -_]{2,255}$/';
@@ -29,8 +35,8 @@ abstract class AbstractController
         $regexTitle = '/^[a-zA-Zà-üÀ-Ü0-9 #?!@$%^,.;&*-]{4,255}$/';
         $regexContent = '/^[a-zA-Zà-üÀ-Ü0-9 #?!@$%^,.;&*-]{4,}$/';
         $regexRole = '/^[12]$/';
-        $regexDateTime = '/^[2][0][2-3][0-9][-][0-1][0-9][-][0-3][0-9][T][0-2][0-9][:][0-6][0-9][#?!@$%^,.;&*-]$/';
-        
+        $regexAvailability = '/^(disponible|indisponible)$/i';
+
         switch ($nameInput) {
             case 'pseudo':
                 if (!preg_match($regexName, $value)) {
@@ -67,14 +73,9 @@ abstract class AbstractController
                     $this->arrayError['idRole'] = 'Merci de renseigner un rôle correct!';
                 }
                 break;
-            case 'start_task':
-                if (!preg_match($regexDateTime, $value)) {
-                    $this->arrayError['availability'] = 'Merci de renseigner une date et heure correcte!';
-                }
-                break;
-            case 'stop_task':
-                if (!preg_match($regexDateTime, $value)) {
-                    $this->arrayError['picture'] = 'Merci de renseigner une date et heure correcte!';
+            case 'availability':
+                if (!preg_match($regexAvailability, $value)) {
+                    $this->arrayError['availability'] = 'La valeur doit être "disponible" ou "indisponible".';
                 }
                 break;
         }
@@ -83,12 +84,11 @@ abstract class AbstractController
     public function check($nameInput, $value)
     {
         $this->isNotEmpty($nameInput);
-        
-        // Vérifie si $value est une chaîne avant d'appliquer htmlspecialchars
+
         if (is_string($value)) {
             $value = htmlspecialchars($value);
         }
-        
+
         $this->checkFormat($nameInput, $value);
         return $this->arrayError;
     }

@@ -64,6 +64,29 @@ class User
     }
     return $users; // Retourne le tableau des utilisateurs
 }
+public static function getClients(): array
+{
+    $pdo = DataBase::getConnection(); // Connexion à la base de données
+    $sql = "SELECT * FROM licence WHERE id_role = 2"; // Remplace `2` par l'ID réel du rôle 'client'
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    // Convertir les résultats en objets User
+    $clients = [];
+    foreach ($rows as $row) {
+        $clients[] = new User(
+            $row['id'],
+            $row['surname'],
+            $row['name'],
+            $row['birth_date'],
+            $row['password'],
+            $row['id_role'],
+            $row['email']
+        );
+    }
+    return $clients;
+}
 
 
     public static function findByEmail(string $email): ?User
@@ -86,28 +109,84 @@ class User
             );
         }
         return null;
+        
     }
-    public static function getClients(): array
+    
+
+    public function getLicences(): array
+    {
+        // Connexion à la base de données
+        $pdo = DataBase::getConnection();
+    
+        // SQL pour récupérer toutes les licences de l'utilisateur basé sur son ID
+        $sql = "SELECT * FROM licence WHERE id_user = ?"; // Utilisez id_user ici
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]); // Utiliser l'ID de l'utilisateur courant pour récupérer ses licences
+    
+        // Récupérer toutes les lignes correspondantes
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Créer un tableau d'objets Licence à partir des résultats
+        $licences = [];
+        foreach ($rows as $row) {
+            $licences[] = new Licence(
+                $row['id'],
+                $row['title'],
+                $row['description'],
+                (int) $row['availability'], // Convertir en entier
+                $row['picture'],
+                $row['price'],
+                $row['id_user'] // Assurez-vous d'utiliser id_user pour la correspondance
+            );
+        }
+    
+        return $licences;
+    }
+    
+public function licenceClient()
 {
     $pdo = DataBase::getConnection();
-    $sql = "SELECT * FROM user WHERE id_role = 3"; // Supposons que les clients ont un rôle ID de 3
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $clients = [];
-    foreach ($rows as $row) {
-        $clients[] = new User(
-            $row['id'],  
-            $row['surname'], 
-            $row['name'],
-            $row['birth_date'], 
-            $row['password'], 
-            $row['id_role'], 
-            $row['email']
+    $sql = "SELECT `id`, `title`, `description`, `availability`, `picture`, `price`, `id_user` FROM `licence` WHERE `id` = ?";
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$this->id]);
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        return new Licence(
+            $row['id'],
+            $row['title'],
+            $row['description'],
+            (int) $row['availability'], // Convertir en entier
+            $row['picture'],
+            $row['price'],
+            $row['id_user']
         );
     }
-    return $clients;
+    return null;
+}
+public static function getLicencesByUserId(int $userId): array
+{
+    $pdo = DataBase::getConnection();
+    $sql = "SELECT * FROM licence WHERE id_user = ?";
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$userId]);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $licences = [];
+    foreach ($rows as $row) {
+        $licences[] = new Licence(
+            $row['id'],
+            $row['title'],
+            $row['description'],
+            (int) $row['availability'],
+            $row['picture'],
+            $row['price'],
+            $row['id_user']
+        );
+    }
+    return $licences;
 }
 
 

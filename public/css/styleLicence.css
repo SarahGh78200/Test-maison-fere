@@ -1,0 +1,106 @@
+ /* Container pour afficher les cartes */
+ .licence-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cartes par ligne */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Style de chaque carte */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+.card p {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.card .price {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Barre de recherche */
+.search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-bar label {
+    font-weight: bold;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+.button-add {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button-add:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .licence-cards {
+        grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne pour les écrans petits */
+    }
+
+    .search-bar input[type="text"] {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .licence-cards {
+        grid-template-columns: 1fr; /* 1 carte par ligne sur les très petits écrans */
+    }
+
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .search-bar input[type="text"] {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 10px;
+    }
+}

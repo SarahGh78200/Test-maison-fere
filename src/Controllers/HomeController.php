@@ -27,9 +27,9 @@ class HomeController extends AbstractController
                     $row['id'],
                     $row['title'],
                     $row['description'],
-                    $row['price'],
                     $row['availability'],
                     $row['picture'],
+                    $row['price'],
                     $row['id_user']
                 );
             }

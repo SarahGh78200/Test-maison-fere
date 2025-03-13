@@ -30,13 +30,16 @@
                         if ($_SESSION['user']['idRole'] == 1 || $_SESSION['user']['idRole'] == 2) {
                     ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/src/Views/Licence/addLicence.view.php">Ajouter une licence</a>
+                                <a class="nav-link" href="/addLicence">Ajouter une licence</a>
                             </li>
                         <?php
                         }
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Déconnexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profil">Profil</a>
                         </li>
                     <?php
                     } else {
@@ -48,6 +51,9 @@
                             <a class="nav-link" href="/login">Connexion</a>
                         </li>
                     <?php } ?>
+                    <li class="nav-item">
+                            <a class="nav-link" href="/licence">Licence</a>
+                        </li>
                 </ul>
             </div>
         </div>
