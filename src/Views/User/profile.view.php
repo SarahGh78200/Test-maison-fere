@@ -14,12 +14,16 @@ require_once(__DIR__ . '/../partials/head.php');
 </head>
 
 <body>
-    <h1>Profil de <?= htmlspecialchars($user->getName()) ?></h1>
+    <h1 class="tittleProfil">Profil de <?= htmlspecialchars($user->getName()) ?></h1>
     <div class="profil">
         <p><strong>Nomm :</strong> <?= htmlspecialchars($user->getSurname()) ?></p>
         <p><strong>Prénom :</strong> <?= htmlspecialchars($user->getName()) ?></p>
         <p><strong>Email :</strong> <?= htmlspecialchars($user->getEmail()) ?></p>
         <p><strong>Date de naissance :</strong> <?= htmlspecialchars($user->getBirthDate()) ?></p>
+        <div class="buttonEditProfile">
+    <a href="/editProfilUser">Modifier mon profil</a>
+</div>
+
     </div>
 
     <div class="buttonMyLicence">

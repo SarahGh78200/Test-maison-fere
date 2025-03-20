@@ -130,4 +130,46 @@ class LicenceController extends AbstractController
             $this->redirectToRoute('/licence');
         }
     }
+      
+
+    public function showLicence()
+{
+    if (!isset($_GET['id'])) {
+        $this->redirectToRoute('/licence');
+        return;
+    }
+
+    $idLicence = htmlspecialchars($_GET['id']);
+    $licence = new Licence($idLicence, null, null, null, null, null, null);
+    $myLicence = $licence->getLicenceById();
+
+    if (!$myLicence) {
+        $_SESSION['errorMessage'] = "Licence introuvable.";
+        $this->redirectToRoute('/licence');
+        return;
+    }
+
+    require_once(__DIR__ . "/../Views/licence/detailLicence.view.php");
+}
+public function viewLicenceDetail()
+{
+    if (isset($_GET['id'])) {
+        $idLicence = htmlspecialchars($_GET['id']);
+        $licence = new Licence($idLicence, null, null, null, null, null, null);
+        $myLicence = $licence->getLicenceById();
+
+        if (!$myLicence) {
+            $this->redirectToRoute('/404');  // Page 404 si licence non trouvée
+        }
+
+        // Récupérer l'utilisateur associé à la licence
+        $idUser = $myLicence->getIdUser();
+        $user = new User($idUser, null, null, null, null, null, null);
+
+        require_once(__DIR__ . "/../Views/licence/licenceDetail.view.php");
+    } else {
+        $this->redirectToRoute('/404');  // Si l'ID n'est pas présent, redirection vers 404
+    }
+}
+
 }

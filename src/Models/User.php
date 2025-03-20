@@ -187,7 +187,21 @@ public static function getLicencesByUserId(int $userId): array
         );
     }
     return $licences;
+    
 }
+
+
+public function updateUser($id, $surname, $name, $birthDate, $email, $password, $idRole): bool {
+    $db = DataBase::getConnection();
+    $sql = "UPDATE user SET surname = ?, name = ?, birth_date = ?, email = ?, password = ?, id_role = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+
+    return $stmt->execute([$surname, $name, $birthDate, $email, $password, $idRole, $id]);
+}
+
+
+
+
 
 
     // Getters et Setters
@@ -195,6 +209,7 @@ public static function getLicencesByUserId(int $userId): array
     public function setId(?int $id): void { $this->id = $id; }
     public function getName(): ?string { return $this->name; }
     public function setName(?string $name): void { $this->name = $name; }
+    
     public function getSurname(): ?string { return $this->surname; }
     public function setSurname(?string $surname): void { $this->surname = $surname; }
     public function getPassword(): ?string { return $this->password; }

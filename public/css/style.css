@@ -3,21 +3,20 @@ h1 {
 	text-align: center;
 	color: #000000;
 }
-.myNav {
-	background-color: #841111;
-}
 
-.myFooter {
-	background: rgba(255, 255, 255, 0.5); /* Couleur blanche semi-transparente */
+
+/* .myFooter {
+	background: rgba(255, 255, 255, 0.5); /* Couleur blanche semi-transparente 
     color: white
 	
-}
+} 
+*/
 
 :root {
     --color-1: #0f1016;
 
 }
-
+/* 
 .myBody {
     background-image: url("../img/matthieu-oger-m8b0B00iHvI-unsplash.jpg");
     background-size: cover;
@@ -31,10 +30,10 @@ h1 {
     background-repeat:repeat no-repeat;
     aspect-ratio: 16 / 9;
 
-}
+} */
 
 .navbar {
-    background: rgba(96, 12, 12, 0.5); /* Couleur blanche semi-transparente */
+    background: rgba(0, 0, 0, 0.5); /* Couleur blanche semi-transparente */
     color: white
 }
 
@@ -73,30 +72,7 @@ background: rgba(255, 255, 255, 0.4);
 
 
 .navbar {
-    background: rgba(255, 255, 255, 0.5); /* Couleur blanche semi-transparente */
+    background: rgba(0, 0, 0, 0.5); /* Couleur blanche semi-transparente */
     color: white
-}
-
-/* Formulaire de connexion*/
-
-.formulaireDeConnexion{
-width: 20%;
-background-color: rgb(255, 255, 255);
-margin: 100px 0px 100px 40%;
-border-radius: 20px;
-background: rgba(255, 255, 255, 0.4);
-}
-.boutons{
-	margin-top: 10px;
-   margin-left: 100px;
-   border-radius: 10px;
-}
-.mb-3{
-    width: 75%;
-    margin-left: 40px;
-    border-radius: 50px;
-}
-.form-label{
-    padding-top: 20px;
 }
 

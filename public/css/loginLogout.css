@@ -1,0 +1,94 @@
+
+  
+    
+    /* BODY LOGIN & REGISTER */
+    .myBodyLogin,
+    .myBodyRegister {
+        background: url("../img/backgroundConnexion.jpg") center/cover no-repeat;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    /* /* FORMULAIRE */
+    .formulaire1 {
+        background: rgba(229, 222, 222, 0.85);
+        padding: 20px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    } 
+    
+    .formulaire1:hover {
+        transform: scale(1.02);
+    }
+    
+    .formulaire1 input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .boutons {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+        margin-top: 10px;
+    }
+    
+    .boutons:hover {
+        background-color: var(--secondary-color);
+    }
+    
+    /* MEDIA QUERIES */
+    
+    /* Tablettes (768px et moins) */
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 1.8rem;
+        }
+        
+        .formulaire1 {
+            width: 90%;
+        }
+    }
+    
+    /* Mobiles (480px et moins) */
+    @media screen and (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+        
+        .formulaire1 {
+            width: 95%;
+            padding: 15px;
+        }
+        
+        .formulaire1 input {
+            font-size: 0.9rem;
+        }
+        
+        .boutons {
+            font-size: 0.9rem;
+            padding: 10px;
+        }
+    }
+    

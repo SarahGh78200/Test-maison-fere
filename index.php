@@ -19,6 +19,12 @@ $router->addRoute('/logout', 'LogoutController', 'logout');
 $router->addRoute('/404', 'ErrorController', 'notFound');
 $router->addRoute('/profil', 'UserController', 'profil');
 $router->addRoute('/licenceUser', 'UserController', 'mesLicences');
+$router->addRoute('/editProfilUser', 'UserController', 'editProfilUser');
+$router->addRoute('/licenceDetails', 'LicenceController', 'showLicence');
+$router->addRoute('/licenceDetail', 'LicenceController', 'viewLicenceDetail');
+
+
+
 
 
 

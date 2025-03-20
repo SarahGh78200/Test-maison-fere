@@ -24,6 +24,7 @@ require_once(__DIR__ . '/../partials/head.php');
                         <th>Description</th>
                         <th>Prix</th>
                         <th>Disponibilité</th>
+                        <th>Action</th> <!-- Ajout de la colonne action -->
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,13 @@ require_once(__DIR__ . '/../partials/head.php');
                             <td><?= htmlspecialchars($licence->getDescription()) ?></td>
                             <td><?= htmlspecialchars($licence->getPrice()) ?> €</td>
                             <td><?= $licence->getAvailability() ? 'Disponible' : 'Indisponible' ?></td>
+                            <td>
+                                <!-- Formulaire de suppression -->
+                                <form action="/deleteLicence" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cette licence ?');">
+                                    <input type="hidden" name="id" value="<?= $licence->getId() ?>">
+                                    <button type="submit">Supprimer</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

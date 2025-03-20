@@ -182,4 +182,5 @@ class Licence
         $this->id_user = $id_user;
         return $this;
     }
+    
 }

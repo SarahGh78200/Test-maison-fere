@@ -1,89 +1,115 @@
- /* Container pour afficher les cartes */
- .licence-cards {
+/* Style principal de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Titre de la page */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Container pour afficher les cartes */
+.licence-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 cartes par ligne */
     gap: 20px;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Style de chaque carte */
 .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
     background-color: #fff;
-}
-
-.card img {
-    max-width: 100%;
-    height: auto;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour effet de profondeur */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition au survol */
+    border: 1px solid #ddd;
 }
 
+.card:hover {
+    transform: translateY(-5px); /* Effet de décalage au survol */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+/* Image de la carte */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Assure que l'image est bien découpée sans déformation */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Titre de la carte */
 .card h2 {
-    font-size: 1.5em;
-    margin-top: 15px;
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin: 15px 0 10px;
+    padding: 0 10px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
+/* Description de la carte */
 .card p {
     font-size: 1em;
-    margin-top: 10px;
+    color: #555;
+    margin: 0 10px 10px;
 }
 
+/* Prix de la licence */
 .card .price {
     font-weight: bold;
-    color: #4CAF50;
-}
-
-/* Barre de recherche */
-.search-bar {
+    font-size: 1.2em;
+    color: #27ae60;
+    margin-top: 10px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
-.search-bar label {
+/* Texte "Disponible" */
+.card p:last-child {
+    font-size: 0.9em;
+    color: #27ae60;
     font-weight: bold;
+    text-align: center;
 }
 
-.search-bar input[type="text"] {
-    padding: 10px;
-    width: 200px;
-}
 
-.search-bar button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
 
-.search-bar button:hover {
-    background-color: #45a049;
-}
-
+/* Button d'ajout de licence */
 .button-add {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #27ae60;
     color: white;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
+    margin: 20px auto;
+    display: block;
 }
 
 .button-add:hover {
-    background-color: #45a049;
+    background-color: #2ecc71;
 }
 
+/* Adaptations pour les petits écrans */
 @media (max-width: 768px) {
     .licence-cards {
         grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne pour les écrans petits */
     }
 
     .search-bar input[type="text"] {
-        width: 150px;
+        width: 200px;
     }
 }
 

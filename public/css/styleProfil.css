@@ -1,18 +1,62 @@
+/* Conteneur du profil */
 .profil {
     border: solid;
     border-radius: 10px;
     max-width: 20%;
     margin-left: 10%;
+    padding: 15px;
+    background-color: #f4f4f4;
 }
 
+/* Conteneur du bouton "Mes Licences" */
 .buttonMyLicence {
     border: solid;
     border-radius: 10px;
-    max-width: 10%;
+    max-width: 20%;
     margin-left: 10%;
     margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    text-align: center;
 }
 
-.a{
-    align-content: center;
+/* Style du lien dans le bouton */
+.buttonMyLicence a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
 }
+
+/* Hover effect pour le bouton */
+.buttonMyLicence:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Alignement centré pour le bouton */
+.a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+@media (max-width: 768px){
+    .profil{
+        max-width: 100%;
+        margin-left: 10px;
+        
+    }
+
+    .buttonMyLicence{
+        max-width: 100%;
+        margin-left: 10px;
+    }
+
+    .tittleProfil{
+        padding-bottom: 33px;
+    }
+
+}
+    

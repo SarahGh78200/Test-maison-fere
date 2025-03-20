@@ -1,6 +1,10 @@
 <?php
 require_once(__DIR__ . "/../partials/head.php"); 
 ?>
+<head>
+    <link rel="stylesheet" href="public/css/loginLogout.css">
+</head>
+
 <div class="myBodyLogin">
 <h1>Connexion</h1>
 
